@@ -1,8 +1,14 @@
 class StocksController < ApplicationController
   def search
-    @stock = Stock.new_from_lookup(params[:stock])
-    # render json:@stock
-    render 'users/my_portfolio'
-  end
+    if params[:stock].blank?
+      flash.now[:danger] = "Stock symbol must not be empty."
+    else
+      @stock = Stock.new_from_lookup(params[:stock])
+      flash.now[:danger] = "You have entered an invalid symbol" unless @stock
+    end
 
+    respond_to do |format|
+      format.js { render partial: 'users/result'}
+    end
+  end 
 end
