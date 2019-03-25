@@ -2,9 +2,11 @@
   <%= bootstrap_flash %>
 </div>
 <% if @stock %>
-  <div class="card list-bg col-md-6 offset-md-3">
-    <strong>Symbol: </strong><%= @stock.ticker %>
-    <strong>Name: </strong><%= @stock.name %>
-    <strong>Price: </strong><%= @stock.last_price %>
+  <div class="row">
+    <div class="card col-md-6 offset-md-3 list-bg">
+      <strong>Symbol: </strong><%= @stock.ticker %>
+      <strong>Name: </strong><%= @stock.name %>
+      <strong>Price: </strong><%= @stock.last_price %>
+    </div>
   </div>
 <% end %>
