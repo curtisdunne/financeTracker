@@ -28,8 +28,13 @@ class UsersController < ApplicationController
     else
       flash[:danger] = "There is something wrong with the Friend request"
     end
-    
+
     redirect_to my_friends_path
+  end
+
+  def show
+    @user = User.find(params[:id])
+    @user_stocks = @user.stocks
   end
 
 end
